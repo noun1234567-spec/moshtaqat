@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المشتقات في اللغة العربية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-dark: #5c2418;
+            --primary-main: #8c3a27;
+            --primary-light: #b8543f;
+            --accent-gold: #d99b26;
+            --accent-gold-light: #fbeed3;
+            --bg-cream: #faf7f2;
+            --card-bg: #ffffff;
+            --text-main: #2d2623;
+            --text-muted: #6b5e58;
+            --shadow-sm: 0 3px 6px rgba(0,0,0,0.06);
+            --shadow-md: 0 6px 12px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 20px rgba(0,0,0,0.15);
+            --radius-md: 10px;
+            --radius-lg: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Tajawal', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-cream);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-main));
+            color: #fff;
+            padding: 1.2rem 1rem;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            border-bottom: 4px solid var(--accent-gold);
+        }
+
+        header h1 {
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 0.4rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-size: 1.05rem;
+            opacity: 0.95;
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 0.4rem 1rem;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Container Layout */
+        .main-container {
+            max-width: 1100px;
+            width: 95%;
+            margin: 1.5rem auto;
+            flex: 1;
+        }
+
+        /* Navigation Tabs */
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: #fff;
+            border: 2px solid var(--primary-main);
+            color: var(--primary-main);
+            padding: 0.6rem 1.4rem;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .tab-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            background: var(--accent-gold-light);
+        }
+
+        .tab-btn.active {
+            background: var(--primary-main);
+            color: #fff;
+            box-shadow: 0 4px 10px rgba(140, 58, 39, 0.3);
+        }
+
+        /* Content Sections */
+        .content-section {
+            display: none;
+            animation: fadeIn 0.4s ease forwards;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Section 1: Interactive Tree Animation (MODIFIED & COMPACT) --- */
+        .derivation-demo {
+            background: #fff;
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            border: 1px solid #e2d9cf;
+        }
+
+        .demo-title {
+            color: var(--primary-dark);
+            font-size: 1.35rem;
+            margin-bottom: 0.5rem;
+            font-weight: 800;
+        }
+
+        .tree-container {
+            position: relative;
+            padding: 1.5rem 0.8rem;
+            background: linear-gradient(180deg, #fdfbf7 0%, #f5eee6 100%);
+            border-radius: var(--radius-md);
+            margin: 1rem 0;
+            border: 2px dashed var(--accent-gold);
+        }
+
+        /* Compact Root Box */
+        .root-box {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-main));
+            color: #fff;
+            padding: 0.6rem 1.8rem;
+            font-size: 1.3rem;
+            font-weight: 900;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 1.2rem;
+            position: relative;
+            z-index: 2;
+            letter-spacing: 1px;
+            border: 2px solid var(--accent-gold);
+        }
+
+        /* Compact Cards Grid */
+        .branches-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(115px, 1fr));
+            gap: 0.75rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Smaller Compact Card */
+        .branch-card {
+            background: #fff;
+            padding: 0.6rem 0.4rem;
+            border-radius: 10px;
+            border: 2px solid #e0cfc1;
+            box-shadow: var(--shadow-sm);
+            cursor: pointer;
+            transition: all 0.25s ease;
+            user-select: none;
+        }
+
+        .branch-card:hover {
+            border-color: var(--primary-main);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+            background: #fffbf8;
+        }
+
+        .branch-card.active-branch {
+            background: var(--primary-main) !important;
+            color: #fff !important;
+            border-color: var(--primary-dark) !important;
+            transform: scale(1.03);
+            box-shadow: var(--shadow-md);
+        }
+
+        .branch-card .title {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            line-height: 1.2;
+        }
+
+        .branch-card.active-branch .title {
+            color: #ffffff;
+        }
+
+        .branch-card .example {
+            font-size: 1.05rem;
+            margin-top: 0.3rem;
+            color: var(--primary-main);
+            font-weight: 900;
+        }
+
+        .branch-card.active-branch .example {
+            color: #ffea79 !important;
+        }
+
+        /* HIGH-VISIBILITY EXPLANATION BOX (المستطيل الموضح الكبير الواضح) */
+        .explanation-box {
+            background: #fffaf0;
+            padding: 1.2rem 1.5rem;
+            border-radius: var(--radius-md);
+            border: 3px solid var(--accent-gold);
+            margin-top: 1.2rem;
+            box-shadow: 0 4px 15px rgba(217, 155, 38, 0.25);
+            text-align: right;
+            transition: all 0.3s ease;
+        }
+
+        .explanation-box .box-header {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            border-bottom: 2px solid var(--accent-gold-light);
+            padding-bottom: 0.6rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .explanation-box .box-title {
+            font-size: 1.35rem;
+            font-weight: 900;
+            color: var(--primary-dark);
+        }
+
+        .explanation-box .box-word {
+            background: var(--primary-main);
+            color: #fff;
+            padding: 0.2rem 0.9rem;
+            border-radius: 20px;
+            font-size: 1.2rem;
+            font-weight: 800;
+        }
+
+        .explanation-box .box-text {
+            font-size: 1.15rem;
+            color: #222;
+            line-height: 1.7;
+            font-weight: 600;
+        }
+
+        .explanation-box .box-weight {
+            display: inline-block;
+            margin-top: 0.5rem;
+            background: var(--accent-gold-light);
+            color: var(--primary-dark);
+            padding: 0.3rem 0.8rem;
+            border-radius: 6px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            border: 1px solid var(--accent-gold);
+        }
+
+        /* --- Section 2: Detailed Cards Grid --- */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.2rem;
+        }
+
+        .derivative-card {
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            border-top: 5px solid var(--primary-main);
+            box-shadow: var(--shadow-sm);
+            padding: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-left: 1px solid #eee;
+            border-right: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #f2ece6;
+            padding-bottom: 0.6rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+        }
+
+        .card-tag {
+            background: var(--accent-gold-light);
+            color: var(--primary-dark);
+            padding: 0.25rem 0.7rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        .card-section-title {
+            font-weight: 700;
+            color: var(--primary-main);
+            margin: 0.6rem 0 0.3rem 0;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .examples-list {
+            list-style: none;
+            margin-bottom: 0.8rem;
+        }
+
+        .examples-list li {
+            background: #fdf8f5;
+            padding: 0.5rem 0.7rem;
+            border-radius: 8px;
+            margin-bottom: 0.4rem;
+            font-size: 0.95rem;
+            border: 1px solid #f0e6e2;
+        }
+
+        .quran-verse {
+            color: #1b5e20;
+            font-family: 'Traditional Arabic', serif;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        .formation-box {
+            background: #f5f6f8;
+            padding: 0.7rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: #333;
+            line-height: 1.5;
+        }
+
+        /* --- Section 3: Interactive Quiz --- */
+        .quiz-container {
+            background: #fff;
+            border-radius: var(--radius-lg);
+            padding: 2rem 1.5rem;
+            box-shadow: var(--shadow-md);
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid #eee;
+        }
+
+        .quiz-score {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary-main);
+            background: var(--accent-gold-light);
+            padding: 0.4rem 1rem;
+            border-radius: 30px;
+        }
+
+        .question-text {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 1.2rem;
+            line-height: 1.5;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.8rem;
+        }
+
+        .option-btn {
+            background: #fdfdfd;
+            border: 2px solid #e0e0e0;
+            padding: 0.8rem 1rem;
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+            font-weight: 600;
+            text-align: right;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .option-btn:hover {
+            border-color: var(--primary-light);
+            background: #fef7f5;
+        }
+
+        .option-btn.correct {
+            background: #e8f5e9 !important;
+            border-color: #2e7d32 !important;
+            color: #2e7d32 !important;
+        }
+
+        .option-btn.wrong {
+            background: #ffebee !important;
+            border-color: #c62828 !important;
+            color: #c62828 !important;
+        }
+
+        .feedback-box {
+            margin-top: 1.2rem;
+            padding: 0.9rem;
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+            font-weight: 600;
+            display: none;
+        }
+
+        .feedback-box.correct-bg {
+            background: #e8f5e9;
+            color: #1b5e20;
+            border: 1px solid #a5d6a7;
+        }
+
+        .feedback-box.wrong-bg {
+            background: #ffebee;
+            color: #b71c1c;
+            border: 1px solid #ef9a9a;
+        }
+
+        .next-btn {
+            margin-top: 1.2rem;
+            background: var(--primary-main);
+            color: #fff;
+            border: none;
+            padding: 0.7rem 1.8rem;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            float: left;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.5rem; }
+            .branches-grid { grid-template-columns: repeat(3, 1fr); }
+            .root-box { font-size: 1.1rem; padding: 0.5rem 1.2rem; }
+            .explanation-box .box-title { font-size: 1.1rem; }
+            .explanation-box .box-text { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+   <header>
+    <h1> المشتقات </h1>
+    <p>تُشتقُّ الأسماءُ والأفعالُ من (الجَذْر) اللغويِّ الواحدِ لتُؤدّي معانِيَ مُتنوعةً ومُحَدَّدة</p>
+</header>
+
+    <!-- Main Content Container -->
+    <div class="main-container">
+
+        <!-- Navigation Tabs -->
+        <div class="nav-tabs">
+            <button class="tab-btn active" onclick="switchTab('tree-tab')">
+                <i class="fa-solid fa-sitemap"></i> اشتقاقات الجذر (حـ صـ د)
+            </button>
+            <button class="tab-btn" onclick="switchTab('cards-tab')">
+                <i class="fa-solid fa-book-open"></i> تفصيل المشتقات
+            </button>
+            <button class="tab-btn" onclick="switchTab('quiz-tab')">
+                <i class="fa-solid fa-gamepad"></i>  راجع ما تعلّمت
+            </button>
+        </div>
+
+        <!-- TAB 1: TREE ANIMATION DEMO WITH ROOT [ح - ص - د] -->
+        <div id="tree-tab" class="content-section active">
+            <div class="derivation-demo">
+                <h2 class="demo-title"><i class="fa-solid fa-wand-magic-sparkles"></i> اضغط على المشتق للتوضيح</h2>
+                <p style="color: var(--text-muted); margin-bottom: 1rem; font-size: 0.95rem;">
+                    الجذر اللغوي هو أصل الكلمات، ومنه تولد أسماءٌ لها أوزان ومعانٍ مختلفة:
+                </p>
+
+                <div class="tree-container">
+                    <!-- Root Node: ح - ص - د -->
+                    <div class="root-box">
+                        الجَذْر: [ حَـ . صَ . دَ ]
+                    </div>
+                    
+                    <!-- Derived Branches (Compact Cards) -->
+                    <div class="branches-grid">
+                        <div class="branch-card active-branch" onclick="highlightBranch(this, 'اسم الفاعل', 'حَاصِد', 'يدلُّ على مَن فعل الحصاد.', 'على وزن: فَاعِل')">
+                            <div class="title">اسم الفاعل</div>
+                            <div class="example">حَاصِد</div>
+                        </div>
+
+                        <div class="branch-card" onclick="highlightBranch(this, 'صيغة المبالغة', 'حَصَّاد', 'تدلُّ على مَن بكثر الحصاد ويبالغ فيه.', 'على وزن: فَعَّال')">
+                            <div class="title">صيغة المبالغة</div>
+                            <div class="example">حَصَّاد</div>
+                        </div>
+
+                        <div class="branch-card" onclick="highlightBranch(this, 'اسم المفعول', 'مَحْصُود', 'يدلُّ على الزرع أو الشيء الذي وقع عليه فعل الحصاد.', 'على وزن: مَفْعُول')">
+                            <div class="title">اسم المفعول</div>
+                            <div class="example">مَحْصُود</div>
+                        </div>
+
+                        <div class="branch-card" onclick="highlightBranch(this, 'اسم المكان / الزمان', 'مَحْصَد', 'يدلُّ على مكان وقوع الحصاد أو أوانه وزمنه.', 'على وزن: مَفْعَل')">
+                            <div class="title">اسم المكان</div>
+                            <div class="example">مَحْصَد</div>
+                        </div>
+
+                        <div class="branch-card" onclick="highlightBranch(this, 'اسم الآلة', 'مِحْصَدَة / مِحْصَاد', 'يدلُّ على الآلة والأداة التي يحصدُ بها.', 'على وزن: مِفْعَلَة / مِفْعَال')">
+                            <div class="title">اسم الآلة</div>
+                            <div class="example">مِحْصَدَة</div>
+                        </div>
+
+                        <div class="branch-card" onclick="highlightBranch(this, 'اسم التفضيل', 'أَحْصَد', 'يدلُّ على التفضيل والزيادة في جودة الحصاد أو وفرته.', 'على وزن: أَفْعَل')">
+                            <div class="title">اسم التفضيل</div>
+                            <div class="example">أَحْصَد</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ENHANCED CLEAR EXPLANATION BOX (المستطيل الموضح الواضح) -->
+                <div id="explanation-box" class="explanation-box">
+                    <div class="box-header">
+                        <span class="box-title" id="exp-title">اسم الفاعل</span>
+                        <span class="box-word" id="exp-word">حَاصِد</span>
+                    </div>
+                    <div class="box-text" id="exp-desc">
+                        يدلُّ على مَن فعل الحصاد.
+                    </div>
+                    <div>
+                        <span class="box-weight" id="exp-weight">على وزن: فَاعِل</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- TAB 2: DETAILED CARDS GRID (FROM ATTACHED IMAGE) -->
+        <div id="cards-tab" class="content-section">
+            <div class="cards-grid">
+
+                <!-- 1. اسم الفاعل -->
+                <div class="derivative-card">
+                    <div>
+                        <div class="card-header">
+                            <span class="card-title">اسم الفاعل</span>
+                            <span class="card-tag">يدلُّ على مَن فعل الفعْل</span>
+                        </div>
+                        <div class="card-section-title"><i class="fa-solid fa-quote-right"></i> الأمثلة:</div>
+                        <ul class="examples-list">
+                            <li>الفَلاَّحُ <strong>حَاصِدٌ</strong> زَرْعَهُ.</li>
+                            <li>سَمِعْتُ <strong>المُتَكَلِّمَ</strong> بِوُضُوحٍ.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="card-section-title"><i class="fa-solid fa-gears"></i> صياغته:</div>
+                        <div class="formation-box">
+                            • <strong>من الثلاثي:</strong> على وزن <b>فَاعِل</b> (مثل: حَاصِد / جَالِس).<br>
+                            • <strong>من غير الثلاثي:</strong> على صيغة المضارع مع إبدال حرف المضارعة <b>ميمًا مضمومة وكسر ما قبل الآخر</b> (مثل: مُتَكَلِّم).
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. صيغ المبالغة -->
+                <div class="derivative-card">
+                    <div>
+                        <div class="card-header">
+                            <span class="card-title">صيغ المبالغة</span>
+                            <span class="card-tag">تدلُّ على من فعل الفعل بكثرة</span>
+                        </div>
+                        <div class="card-section-title"><i class="fa-solid fa-quote-right"></i> الأمثلة:</div>
+                        <ul class="examples-list">
+                            <li class="quran-verse">﴿إِنَّ اللَّهَ كَانَ <strong>تَوَّابًا رَحِيمًا</strong>﴾ [النساء: 16]</li>
+                            <li>هَذَا المزارِعُ <strong>حَصَّادٌ</strong> نَشِيطٌ.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="card-section-title"><i class="fa-solid fa-gears"></i> صياغته:</div>
+                        <div class="formation-box">
+                            تُصاغ على خمسة أوزان مشهورة:<br>
+                            <b>فَعَّال</b> (حَصَّاد / تَوَّاب) | <b>مِفْعَال</b> | <b>فَعُول</b> | <b>فَعِيل</b> (رَحِيم) | <b>فَعِل</b>.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. اسم المفعول -->
+                <div class="derivative-card">
+                    <div>
+                        <div class="card-header">
+                            <span class="card-title">اسم المفعول</span>
+                            <span class="card-tag">يدلُّ على مَن وقع عليه الفعل</span>
+                        </div>
+                        <div class="card-section-title"><i class="fa-solid fa-quote-right"></i> الأمثلة:</div>
+                        <ul class="examples-list">
+                            <li>القَمْحُ <strong>مَحْصُودٌ</strong> فِِي المَوْسِمِ.</li>
+                            <li>الـمَاءُ <strong>مُسْتَخْرَجٌ</strong> مِنَ البِئْرِ.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="card-section-title"><i class="fa-solid fa-gears"></i> صياغته:</div>
+                        <div class="formation-box">
+                            • <strong>من الثلاثي:</strong> على وزن <b>مَفْعُول</b> (مثل: مَحْصُود / مَكْتُوب).<br>
+                            • <strong>من غير الثلاثي:</strong> على صيغة المضارع مع إبدال حرف المضارعة <b>ميمًا مضمومة وفتح ما قبل الآخر</b> (مثل: مُسْتَخْرَج).
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. الصفة المشبهة -->
+                <div class="derivative-card">
+                    <div>
+                        <div class="card-header">
+                            <span class="card-title">الصفة المشبَّهة</span>
+                            <span class="card-tag">تدلُّ على صفة ثابتة</span>
+                        </div>
+                        <div class="card-section-title"><i class="fa-solid fa-quote-right"></i> الأمثلة:</div>
+                        <ul class="examples-list">
+                            <li>يُوسُفُ -عليه السلام- <strong>حَسَنُ</strong> الوَجْهِ.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="card-section-title"><i class="fa-solid fa-gears"></i> صياغته:</div>
+                        <div class="formation-box">
+                            تُصاغ بأوزان مختلفة، منها:<br>
+                            <b>فَعِيل</b> | <b>فَعَل</b> (حَسَن) | <b>أَفْعَل</b> | <b>فَعْلَاء</b> | <b>فَعْلَان</b>.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. اسما الزمان والمكان -->
+                <div class="derivative-card">
+                    <div>
+                        <div class="card-header">
+                            <span class="card-title">اسما الزمان والمكان</span>
+                            <span class="card-tag">يدلان على زمان أو مكان الوقوع</span>
+                        </div>
+                        <div class="card-section-title"><i class="fa-solid fa-quote-right"></i> الأمثلة:</div>
+                        <ul class="examples-list">
+                            <li>الصَّيْفُ <strong>مَحْصَدُ</strong> الزَّرْعِ (زمان).</li>
+                            <li>الحَقْلُ <strong>مَحْصَدُ</strong> الخَيْرِ (مكان).</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="card-section-title"><i class="fa-solid fa-gears"></i> صياغته:</div>
+                        <div class="formation-box">
+                            • <strong>من الثلاثي:</strong> على وزن <b>مَفْعَل</b> أو <b>مَفْعِل</b> (مثل: مَحْصَد).<br>
+                            • <strong>من غير الثلاثي:</strong> كاسم المفعول.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. اسم الآلة -->
+                <div class="derivative-card">
+                    <div>
+                        <div class="card-header">
+                            <span class="card-title">اسم الآلة</span>
+                            <span class="card-tag">يدلُّ على الأداة التي يحضد بها</span>
+                        </div>
+                        <div class="card-section-title"><i class="fa-solid fa-quote-right"></i> الأمثلة:</div>
+                        <ul class="examples-list">
+                            <li>تَعْمَلُ <strong>المِحْصَدَةُ</strong> فِي المَزْرَعَةِ.</li>
+                            <li class="quran-verse">﴿الْمِصْبَاحُ فِي <strong>زُجَاجَةٍ</strong>﴾ [النور: 35]</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="card-section-title"><i class="fa-solid fa-gears"></i> صياغته:</div>
+                        <div class="formation-box">
+                            تُصاغ بأوزان مختلفة، منها:<br>
+                            <b>مِفْعَلَة</b> (مِحْصَدَة) | <b>فَعَّال</b> (حَصَّاد) | <b>مِفْعَال</b> (مِحْصَاد) | <b>مِفْعَل</b> (مِحْصَد).
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7. اسم التفضيل -->
+                <div class="derivative-card" style="grid-column: 1 / -1;">
+                    <div>
+                        <div class="card-header">
+                            <span class="card-title">اسم التفضيل</span>
+                            <span class="card-tag">يدلُّ على اشتراك شيئين في صفة وزيادة أحدهما</span>
+                        </div>
+                        <div class="card-section-title"><i class="fa-solid fa-quote-right"></i> الأمثلة:</div>
+                        <ul class="examples-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 0.5rem;">
+                            <li>هَذَا <strong>أَحْصَدُ</strong> مِنْ غَيْرِهِ.</li>
+                            <li class="quran-verse">﴿وَأَنتَ <strong>أَرْحَمُ</strong> الرَّاحِمِينَ﴾ [الأعراف: 151]</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="card-section-title"><i class="fa-solid fa-gears"></i> صياغته:</div>
+                        <div class="formation-box">
+                            يُصاغ غالبًا من الثلاثي على وزن: <b>أَفْعَل</b> (مثل: أَحْصَد، أَرْحَم، أَكْبَر).
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- TAB 3: INTERACTIVE QUIZ -->
+        <div id="quiz-tab" class="content-section">
+            <div class="quiz-container">
+                <div class="quiz-header">
+                    <h2><i class="fa-solid fa-circle-question"></i> اختبر معلوماتك في المشتقات</h2>
+                    <div class="quiz-score">النقاط: <span id="score-val">0</span> / <span id="total-val">5</span></div>
+                </div>
+
+                <div id="quiz-body">
+                    <div class="question-box">
+                        <div class="question-text" id="q-text">جاري تحميل السؤال...</div>
+                        <div class="options-grid" id="options-container"></div>
+                    </div>
+                    <div id="feedback" class="feedback-box"></div>
+                    <button id="next-btn" class="next-btn" onclick="nextQuestion()">السؤال التالي <i class="fa-solid fa-arrow-left"></i></button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Tab Switcher
+        function switchTab(tabId) {
+            document.querySelectorAll('.content-section').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+            
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
+        // Tree Branch Interactive View with Dynamic Highlighting
+        function highlightBranch(element, title, word, desc, weight) {
+            document.querySelectorAll('.branch-card').forEach(card => card.classList.remove('active-branch'));
+            element.classList.add('active-branch');
+
+            // Update Clear Explanation Box
+            document.getElementById('exp-title').textContent = title;
+            document.getElementById('exp-word').textContent = word;
+            document.getElementById('exp-desc').textContent = desc;
+            document.getElementById('exp-weight').textContent = weight;
+
+            const box = document.getElementById('explanation-box');
+            box.style.animation = 'none';
+            box.offsetHeight; // trigger reflow
+            box.style.animation = 'fadeIn 0.3s ease';
+        }
+
+        // Quiz Questions Data (Updated with Root ح ص د)
+        const quizData = [
+            {
+                question: "ما نوع المشتق في كلمة (حَاصِد) في قولنا: 'الفَلاَّحُ حَاصِدٌ زَرْعَهُ'؟",
+                options: ["اسم مفعول", "اسم فاعل ثلاثي", "اسم تفضيل", "صيغة مبالغة"],
+                correct: 1,
+                explanation: "صح! (حَاصِد) اسم فاعل من الفعل الثلاثي (حَصَدَ) على وزن فاعِل."
+            },
+            {
+                question: "كلمة (مِحْصَدَة) تدل على الأدَاة التي يحصدُ بها، إذن هي:",
+                options: ["اسم مكان", "اسم آلة", "اسم مفعول", "صفة مشبهة"],
+                correct: 1,
+                explanation: "أحسنت! (مِحْصَدَة) اسم آلة على وزن مِفْعَلَة."
+            },
+            {
+                question: "في جملة 'القَمْحُ مَحْصُودٌ'، المشتق (مَحْصُود):",
+                options: ["اسم فاعل", "اسم آلة", "اسم مفعول", "اسم زمان"],
+                correct: 2,
+                explanation: "ممتاز! يُصاغ اسم المفعول من الثلاثي على وزن (مَفْعُول) مثل مَحْصُود."
+            },
+            {
+                question: "ما صيغة المبالغة التي تدل على كثرة القيام بالحصاد؟",
+                options: ["حَاصِد", "مَحْصُود", "حَصَّاد", "أَحْصَد"],
+                correct: 2,
+                explanation: "إجابة صحيحة! (حَصَّاد) على وزن فَعَّال وهي صيغة مبالغة تدل على الكثرة."
+            },
+            {
+                question: "عندما نقول: 'الصَّيْفُ مَحْصَدُ القَمْحِ'، كلمة (مَحْصَد) تدل على:",
+                options: ["اسم زمان", "اسم مكان", "اسم تفضيل", "اسم آلة"],
+                correct: 0,
+                explanation: "رائع! (مَحْصَد) هنا اسم زمان لأنها جاءت مقترنة بـ (الصيف) لتدل على زمن الحصاد."
+            }
+        ];
+
+        let currentQ = 0;
+        let score = 0;
+
+        function loadQuiz() {
+            const q = quizData[currentQ];
+            document.getElementById('q-text').textContent = `${currentQ + 1}. ${q.question}`;
+            const optsContainer = document.getElementById('options-container');
+            optsContainer.innerHTML = '';
+
+            document.getElementById('feedback').style.display = 'none';
+            document.getElementById('next-btn').style.display = 'none';
+
+            q.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.innerHTML = `<span>${opt}</span> <i class="fa-regular fa-circle"></i>`;
+                btn.onclick = () => checkAnswer(idx);
+                optsContainer.appendChild(btn);
+            });
+
+            document.getElementById('total-val').textContent = quizData.length;
+        }
+
+        function checkAnswer(selectedIdx) {
+            const q = quizData[currentQ];
+            const buttons = document.querySelectorAll('.option-btn');
+            const feedback = document.getElementById('feedback');
+
+            buttons.forEach(btn => btn.style.pointerEvents = 'none');
+
+            if (selectedIdx === q.correct) {
+                buttons[selectedIdx].classList.add('correct');
+                buttons[selectedIdx].querySelector('i').className = 'fa-solid fa-circle-check';
+                score++;
+                document.getElementById('score-val').textContent = score;
+                feedback.className = 'feedback-box correct-bg';
+                feedback.innerHTML = `<i class="fa-solid fa-check"></i> ${q.explanation}`;
+            } else {
+                buttons[selectedIdx].classList.add('wrong');
+                buttons[selectedIdx].querySelector('i').className = 'fa-solid fa-circle-xmark';
+                buttons[q.correct].classList.add('correct');
+                feedback.className = 'feedback-box wrong-bg';
+                feedback.innerHTML = `<i class="fa-solid fa-xmark"></i> إجابة خاطئة. ${q.explanation}`;
+            }
+
+            feedback.style.display = 'block';
+            document.getElementById('next-btn').style.display = 'block';
+        }
+
+        function nextQuestion() {
+            currentQ++;
+            if (currentQ < quizData.length) {
+                loadQuiz();
+            } else {
+                showFinalScore();
+            }
+        }
+
+        function showFinalScore() {
+            const body = document.getElementById('quiz-body');
+            body.innerHTML = `
+                <div style="text-align: center; padding: 2rem 0;">
+                  
+                    <p style="font-size: 1.2rem; margin-bottom: 1.5rem;">درجتك النهائية: <strong>${score}</strong> من <strong>${quizData.length}</strong></p>
+                    <button class="tab-btn" style="margin: 0 auto; background: var(--primary-main); color: #fff;" onclick="location.reload()">إعادة الاختبار <i class="fa-solid fa-rotate-right"></i></button>
+                </div>
+            `;
+        }
+
+        window.onload = loadQuiz;
+    </script>
+</body>
+</html>
